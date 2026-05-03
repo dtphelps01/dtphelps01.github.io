@@ -116,17 +116,23 @@ nav a:hover {
 
 /* CONTENT */
 .container {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto 70px;
+    padding: 0 28px;
     display: flex;
-    justify-content: center;   /* centers everything */
-    margin-bottom: 70px;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* KEY FIX: shrink grid and center it */
+/* CARD GRID */
 .card-grid {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 340px); /* fixed width cards */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 340px));
+    justify-content: center;
     gap: 32px;
-    justify-content: center; /* centers the grid itself */
+    animation: fadeUp 1s ease 0.15s both;
 }
 
 /* CARDS */
@@ -144,6 +150,14 @@ nav a:hover {
     box-shadow: 0 0 28px rgba(43, 113, 194, 0.18);
 }
 
+/* STANDALONE CARDS */
+/* Fixes Last Family Vacation and Future Education Plans */
+.container > .card {
+    width: 100%;
+    max-width: 1084px;
+    margin-top: 32px;
+}
+
 .card h2 {
     font-size: 1.5rem;
     margin-bottom: 16px;
@@ -156,7 +170,7 @@ nav a:hover {
     line-height: 1.8;
 }
 
-/* BADGE */
+/* BADGES */
 .badge {
     display: inline-block;
     font-size: 0.7rem;
@@ -184,6 +198,7 @@ footer {
         opacity: 0;
         transform: translateY(18px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -192,11 +207,39 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 650px) {
+    nav {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    nav a {
+        margin: 0 10px;
+    }
+
+    .hero {
+        padding-top: 80px;
+    }
+
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
     .card-grid {
         grid-template-columns: 1fr;
     }
 
-    .hero h1 {
-        font-size: 3rem;
+    .container > .card {
+        max-width: 100%;
     }
 }
