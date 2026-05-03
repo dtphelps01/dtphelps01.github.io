@@ -38,7 +38,7 @@ nav a:hover {
     color: #ffffff;
 }
 
-/* HERO SECTION (CENTERED) */
+/* HERO */
 .hero {
     padding: 120px 10% 80px;
     max-width: 1000px;
@@ -91,27 +91,29 @@ nav a:hover {
     margin: 30px auto 60px;
 }
 
+/* 3 PER ROW */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
 }
 
+/* CARDS (BIGGER) */
 .card {
     background: #0d0d0d;
     border: 1px solid #222;
-    padding: 28px;
-    border-radius: 18px;
+    padding: 34px;
+    border-radius: 20px;
     transition: 0.25s;
 }
 
 .card:hover {
-    border-color: #555;
-    transform: translateY(-4px);
+    border-color: #888;
+    transform: translateY(-6px);
 }
 
 .card h2 {
-    font-size: 1.35rem;
+    font-size: 1.45rem;
     margin-bottom: 14px;
 }
 
@@ -124,14 +126,20 @@ nav a:hover {
     line-height: 1.75;
 }
 
-/* SMALL LABELS */
+/* OUTLINED LABELS */
 .badge {
     display: inline-block;
-    color: #999;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
+
+    padding: 6px 12px;
+    border: 1px solid #666;
+    border-radius: 6px;
+
+    color: #e0e0e0;
+    background: transparent;
 }
 
 /* FOOTER */
