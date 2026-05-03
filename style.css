@@ -91,9 +91,19 @@ nav a.active {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 600px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(43,113,194,0.35), transparent 70%);
+
+    width: 1000px;   /* much larger */
+    height: 500px;
+
+    background: radial-gradient(
+        circle,
+        rgba(43,113,194,0.35) 0%,
+        rgba(43,113,194,0.15) 40%,
+        rgba(43,113,194,0.05) 65%,
+        transparent 85%
+    );
+
+    filter: blur(40px);  /* smooth fade */
     z-index: -1;
 }
 
