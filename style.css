@@ -4,10 +4,20 @@
     padding: 0;
 }
 
+:root {
+    --accent: #2b71c2;
+    --bg: #050505;
+    --card: #0d0d0d;
+    --border: #222;
+    --text: #f5f5f5;
+    --muted: #c9c9c9;
+    --soft: #8f8f8f;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #050505;
-    color: #f5f5f5;
+    background: var(--bg);
+    color: var(--text);
     min-height: 100vh;
 }
 
@@ -17,7 +27,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 28px 8%;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid var(--border);
 }
 
 .logo {
@@ -25,7 +35,7 @@ nav {
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #2b71c2; /* BLUE */
+    color: var(--accent);
 }
 
 nav a {
@@ -33,30 +43,32 @@ nav a {
     text-decoration: none;
     margin-left: 24px;
     font-size: 0.95rem;
+    transition: 0.25s;
 }
 
 nav a:hover {
-    color: #ffffff;
+    color: var(--accent);
 }
 
 /* HERO */
 .hero {
-    padding: 120px 10% 80px;
+    padding: 110px 10% 0;
     max-width: 1000px;
     margin: 0 auto;
     text-align: center;
+    animation: fadeUp 0.8s ease both;
 }
 
 .hero h1 {
     font-size: 4rem;
     font-weight: 700;
     letter-spacing: -2px;
+    line-height: 1.05;
     margin-bottom: 24px;
 }
 
-/* "Carter Family" in title */
 .hero h1 span {
-    color: #2b71c2;
+    color: var(--accent);
 }
 
 .hero p {
@@ -64,12 +76,13 @@ nav a:hover {
     font-size: 1.15rem;
     line-height: 1.8;
     max-width: 750px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
 }
 
 /* BUTTONS */
 .button-group {
-    margin-top: 38px;
+    margin-top: 0;
+    margin-bottom: 60px;
     display: flex;
     justify-content: center;
     gap: 15px;
@@ -78,90 +91,142 @@ nav a:hover {
 .btn {
     display: inline-block;
     padding: 13px 24px;
-    border: 1px solid #2b71c2;
-    color: #2b71c2;
+    border: 1px solid var(--accent);
+    color: var(--accent);
     text-decoration: none;
     border-radius: 999px;
     transition: 0.25s;
 }
 
 .btn:hover {
-    background: #2b71c2;
-    color: #050505;
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 22px rgba(43, 113, 194, 0.35);
+    transform: translateY(-3px);
 }
 
 /* CONTENT */
 .container {
-    width: 84%;
+    width: 100%;
     max-width: 1100px;
-    margin: 30px auto 60px;
+    margin: 0 auto 70px;
+    padding: 0 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* GRID */
+/* CARD GRID */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
+    width: 100%;
+    animation: fadeUp 1s ease 0.15s both;
 }
 
 /* CARDS */
 .card {
-    background: #0d0d0d;
-    border: 1px solid #222;
-    padding: 34px;
-    border-radius: 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 36px;
+    border-radius: 22px;
     transition: 0.25s;
 }
 
 .card:hover {
-    border-color: #2b71c2;
+    border-color: var(--accent);
     transform: translateY(-6px);
+    box-shadow: 0 0 28px rgba(43, 113, 194, 0.18);
 }
 
-/* NAMES in cards (family page) */
 .card h2 {
-    font-size: 1.45rem;
-    margin-bottom: 14px;
-    color: #2b71c2;
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: var(--accent);
+    line-height: 1.2;
 }
 
-/* LABELS */
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+/* BADGES */
 .badge {
     display: inline-block;
     font-size: 0.7rem;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-bottom: 16px;
-
     padding: 6px 12px;
-    border: 1px solid #666;
+    border: 1px solid var(--accent);
     border-radius: 6px;
-
-    color: #e0e0e0;
-}
-
-/* TEXT */
-.card p {
-    color: #c9c9c9;
-    line-height: 1.75;
-}
-
-/* LAST FAMILY VACATION TITLE */
-.card h2:last-of-type {
-    /* keeps consistent color */
-    color: #2b71c2;
-}
-
-/* PERSONAL PAGE SECTION TITLES */
-.card h2 {
-    color: #2b71c2;
+    color: var(--accent);
+    background: transparent;
 }
 
 /* FOOTER */
 footer {
-    border-top: 1px solid #222;
+    border-top: 1px solid var(--border);
     color: #777;
     text-align: center;
     padding: 28px;
     font-size: 0.9rem;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 650px) {
+    nav {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    nav a {
+        margin: 0 10px;
+    }
+
+    .hero {
+        padding-top: 80px;
+    }
+
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
 }
