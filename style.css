@@ -24,9 +24,7 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background:
-        radial-gradient(circle at top center, rgba(43, 113, 194, 0.18), transparent 35%),
-        var(--bg);
+    background: var(--bg);
     color: var(--text);
     min-height: 100vh;
 }
@@ -76,15 +74,30 @@ nav a.active {
     letter-spacing: -2px;
     line-height: 1.05;
     margin-bottom: var(--space-md);
+    position: relative;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards;
-    text-shadow: 0 0 30px rgba(43, 113, 194, 0.25);
 }
 
+/* BLUE TITLE PART */
 .hero h1 span {
     color: var(--accent);
 }
 
+/* CENTERED GLOW (REAL FIX) */
+.hero h1::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(43,113,194,0.35), transparent 70%);
+    z-index: -1;
+}
+
+/* TEXT */
 .hero p {
     color: #bdbdbd;
     font-size: 1.15rem;
@@ -163,7 +176,6 @@ nav a.active {
     transition: 0.25s;
     opacity: 0;
     animation: fadeUp 0.65s ease forwards;
-    cursor: default;
 }
 
 .card:hover {
@@ -172,36 +184,15 @@ nav a.active {
     box-shadow: 0 0 28px rgba(43, 113, 194, 0.18);
 }
 
-.card:nth-child(1) { animation-delay: 0.15s; }
-.card:nth-child(2) { animation-delay: 0.25s; }
-.card:nth-child(3) { animation-delay: 0.35s; }
-.card:nth-child(4) { animation-delay: 0.45s; }
-.card:nth-child(5) { animation-delay: 0.55s; }
-.card:nth-child(6) { animation-delay: 0.65s; }
-
 .card h2 {
     font-size: 1.5rem;
     margin-bottom: var(--space-sm);
     color: var(--accent);
-    line-height: 1.2;
-    position: relative;
-    padding-bottom: 12px;
-}
-
-.card h2::after {
-    content: "";
-    display: block;
-    width: 44px;
-    height: 2px;
-    background: var(--accent);
-    margin-top: 12px;
-    border-radius: 999px;
 }
 
 .card p {
     color: var(--muted);
     line-height: 1.8;
-    max-width: 70ch;
 }
 
 /* BADGES */
@@ -215,15 +206,6 @@ nav a.active {
     border: 1px solid var(--accent);
     border-radius: 6px;
     color: var(--accent);
-    background: rgba(43, 113, 194, 0.08);
-}
-
-/* STANDALONE CARD */
-.container > .card {
-    width: 100%;
-    max-width: 1084px;
-    margin-top: var(--space-md);
-    animation-delay: 0.75s;
 }
 
 /* FOOTER */
@@ -233,20 +215,6 @@ footer {
     text-align: center;
     padding: var(--space-md);
     font-size: 0.9rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.9s forwards;
-}
-
-footer p::before {
-    content: "Advanced Python Programming Project • ";
-    color: var(--accent);
-}
-
-/* ACCESSIBILITY */
-a:focus,
-.btn:focus {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
 }
 
 /* ANIMATIONS */
@@ -255,7 +223,6 @@ a:focus,
         opacity: 0;
         transform: translateY(18px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -267,48 +234,8 @@ a:focus,
         opacity: 0;
         transform: translateY(-12px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .hero h1 {
-        font-size: 3rem;
-    }
-}
-
-@media (max-width: 650px) {
-    nav {
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    nav a {
-        margin: 0 10px;
-    }
-
-    .hero {
-        padding: var(--space-lg) 10%;
-    }
-
-    .hero h1 {
-        font-size: 2.4rem;
-    }
-
-    .button-group {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .container > .card {
-        max-width: 100%;
     }
 }
