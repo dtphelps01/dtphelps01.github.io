@@ -31,6 +31,9 @@ body {
     color: var(--text);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
+
+    /* 🔥 PAGE FADE BACK */
+    animation: pageFade 0.6s ease both;
 }
 
 /* NAV */
@@ -40,6 +43,8 @@ nav {
     align-items: center;
     padding: 22px 8%;
     border-bottom: 1px solid var(--border);
+
+    animation: fadeDown 0.6s ease both;
 }
 
 .logo {
@@ -57,6 +62,7 @@ nav a {
     color: #bdbdbd;
     text-decoration: none;
     padding: 6px 0;
+    transition: 0.25s;
 }
 
 nav a::after {
@@ -89,12 +95,50 @@ nav a:hover {
 .hero h1 {
     font-size: 4rem;
     margin-bottom: var(--space-md);
+    position: relative;
+
+    /* 🔥 TITLE LOAD ANIMATION BACK */
+    opacity: 0;
+    animation: titleLoad 0.8s ease forwards;
+}
+
+.hero h1 span {
+    background: linear-gradient(90deg, var(--accent-dark), var(--accent), var(--accent-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* GLOW */
+.hero h1::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1050px;
+    height: 520px;
+    background: radial-gradient(
+        circle,
+        rgba(43, 113, 194, 0.42) 0%,
+        rgba(43, 113, 194, 0.24) 35%,
+        rgba(43, 113, 194, 0.09) 60%,
+        transparent 85%
+    );
+    filter: blur(55px);
+    z-index: -1;
+
+    /* 🔥 PULSE KEPT */
+    animation: glowPulse 4s ease-in-out infinite;
 }
 
 .hero p {
     color: #bdbdbd;
     max-width: 700px;
     margin: auto;
+
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
 }
 
 /* BUTTONS */
@@ -103,12 +147,16 @@ nav a:hover {
     justify-content: center;
     gap: var(--space-sm);
     margin: 32px 0;
+
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.35s forwards;
 }
 
 .btn {
     padding: 12px 24px;
     border-radius: 999px;
     text-decoration: none;
+    transition: 0.25s;
 }
 
 .btn:first-child {
@@ -119,6 +167,11 @@ nav a:hover {
 .btn:last-child {
     border: 1px solid var(--accent);
     color: var(--accent);
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 22px rgba(43, 113, 194, 0.4);
 }
 
 /* CONTAINER */
@@ -141,7 +194,30 @@ nav a:hover {
     border: 1px solid var(--border);
     padding: 32px;
     border-radius: 20px;
+
+    transition: 0.25s;
+
+    /* 🔥 LOAD ANIMATION */
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
 }
+
+/* REMOVE INNER GLOW (DELETED ::before COMPLETELY) */
+
+/* KEEP CLEAN OUTLINE HOVER */
+.card:hover {
+    border-color: var(--accent);
+    transform: translateY(-6px);
+    box-shadow: 0 0 20px rgba(43, 113, 194, 0.2);
+}
+
+/* STAGGERED LOAD */
+.card:nth-child(1) { animation-delay: 0.15s; }
+.card:nth-child(2) { animation-delay: 0.25s; }
+.card:nth-child(3) { animation-delay: 0.35s; }
+.card:nth-child(4) { animation-delay: 0.45s; }
+.card:nth-child(5) { animation-delay: 0.55s; }
+.card:nth-child(6) { animation-delay: 0.65s; }
 
 .card h2 {
     color: var(--accent);
@@ -153,13 +229,13 @@ nav a:hover {
     line-height: 1.7;
 }
 
-/* 🔥 FIX: SAME SPACING FOR WIDE CARDS */
+/* FIX WIDE CARD SPACING */
 .container > .card {
-    margin-top: var(--space-md); /* EXACT same as grid gap */
+    margin-top: var(--space-md);
     width: 100%;
 }
 
-/* 🔥 BADGES (FAMILY PAGE ONLY STYLE CHANGE) */
+/* BADGES (WHITE NOW) */
 .badge {
     display: inline-block;
     margin-bottom: 12px;
@@ -168,10 +244,9 @@ nav a:hover {
     letter-spacing: 1px;
     text-transform: uppercase;
 
-    color: white;              /* 🔥 changed */
-    border: 1px solid white;   /* 🔥 changed */
-    background: transparent;   /* 🔥 changed */
-
+    color: white;
+    border: 1px solid white;
+    background: transparent;
     border-radius: 6px;
 }
 
@@ -182,9 +257,62 @@ footer {
     color: #777;
     padding: 20px;
     border-top: 1px solid var(--border);
+
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
 }
 
-/* RESPONSIVE */
+/* ANIMATIONS */
+@keyframes pageFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes titleLoad {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(0.96);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.04);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE */
 @media (max-width: 650px) {
     .button-group {
         flex-direction: column;
