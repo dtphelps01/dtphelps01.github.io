@@ -5,24 +5,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<script>
-document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty('--x', (e.clientX - rect.left) + 'px');
-        card.style.setProperty('--y', (e.clientY - rect.top) + 'px');
-    });
-});
-</script>    
-    
 <body>
 
 <nav>
     <div class="logo">The Carter Family</div>
     <div>
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="family.html" class="active">Family Page</a>
-        <a href="personal.html" class="active">Personal Page</a>
+        <a href="personal.html">Personal Page</a>
     </div>
 </nav>
 
@@ -37,7 +27,6 @@ document.querySelectorAll('.card').forEach(card => {
 <div class="container">
     <div class="card-grid">
 
-        <!-- TOP ROW -->
         <div class="card">
             <span class="badge">Father</span>
             <h2>Michael Carter</h2>
@@ -65,7 +54,6 @@ document.querySelectorAll('.card').forEach(card => {
             </p>
         </div>
 
-        <!-- BOTTOM ROW -->
         <div class="card">
             <span class="badge">College Student</span>
             <h2>Emily Carter</h2>
@@ -93,18 +81,16 @@ document.querySelectorAll('.card').forEach(card => {
             </p>
         </div>
 
-    </div>
+        <div class="card">
+            <h2>Last Family Vacation</h2>
+            <p>
+                The Carter family recently traveled to Orlando, Florida. They visited theme parks,
+                enjoyed swimming at their resort, tried several local restaurants, and took a guided
+                wildlife tour. Their favorite memory was spending an entire day together at a water park
+                and ending the evening with dinner and fireworks.
+            </p>
+        </div>
 
-    <br><br>
-
-    <div class="card">
-        <h2>Last Family Vacation</h2>
-        <p>
-            The Carter family recently traveled to Orlando, Florida. They visited theme parks,
-            enjoyed swimming at their resort, tried several local restaurants, and took a guided
-            wildlife tour. Their favorite memory was spending an entire day together at a water park
-            and ending the evening with dinner and fireworks.
-        </p>
     </div>
 </div>
 
