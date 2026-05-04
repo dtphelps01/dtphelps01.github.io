@@ -5,31 +5,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<script>
-document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty('--x', (e.clientX - rect.left) + 'px');
-        card.style.setProperty('--y', (e.clientY - rect.top) + 'px');
-    });
-});
-</script> 
-    
 <body>
 
 <nav>
     <div class="logo">Personal Profile</div>
     <div>
-        <a href="index.html" class="active">Home</a>
-        <a href="family.html" class="active">Family Page</a>
+        <a href="index.html">Home</a>
+        <a href="family.html">Family Page</a>
         <a href="personal.html" class="active">Personal Page</a>
     </div>
 </nav>
 
 <section class="hero">
-    <h1>My <span>Personal</span>
-    Web Page
-    </h1>
+    <h1>My <span>Personal</span><br>Web Page</h1>
     <p>
         This page gives a brief overview of my education, interests, past activities,
         accomplishments, and future career goals.
@@ -90,16 +78,14 @@ document.querySelectorAll('.card').forEach(card => {
             </p>
         </div>
 
-    </div>
+        <div class="card">
+            <h2>Future Education Plans</h2>
+            <p>
+                I plan to continue developing my programming skills and may pursue additional education,
+                certifications, or training in software development, cloud technology, or cybersecurity.
+            </p>
+        </div>
 
-    <br><br>
-
-    <div class="card">
-        <h2>Future Education Plans</h2>
-        <p>
-            I plan to continue developing my programming skills and may pursue additional education,
-            certifications, or training in software development, cloud technology, or cybersecurity.
-        </p>
     </div>
 </div>
 
