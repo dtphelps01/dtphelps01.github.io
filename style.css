@@ -128,45 +128,23 @@ nav a.active {
     justify-content: center;
     align-items: center;
     gap: var(--space-sm);
-    margin-bottom: var(--space-lg);
+
+    margin-bottom: 36px; /* 🔥 reduced from var(--space-lg) (64px) */
+    
     opacity: 0;
     animation: fadeUp 0.8s ease 0.35s forwards;
-}
-
-.btn {
-    min-width: 210px;
-    text-align: center;
-    padding: 13px 24px;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: 0.25s;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.btn:first-child {
-    background: linear-gradient(90deg, var(--accent-dark), var(--accent), var(--accent-light));
-    color: var(--bg);
-    border: 1px solid var(--accent);
-}
-
-.btn:last-child {
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    background: transparent;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 22px rgba(43, 113, 194, 0.42);
 }
 
 /* CONTENT */
 .container {
     width: 100%;
     max-width: 1150px;
+
     margin: 0 auto var(--space-lg);
+    margin-top: 0; /* 🔥 ensures no extra gap stacking */
+
     padding: 0 28px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -176,8 +154,10 @@ nav a.active {
 .card-grid {
     width: 100%;
     display: grid;
+
     grid-template-columns: repeat(auto-fit, minmax(320px, 340px));
     justify-content: center;
+
     gap: var(--space-md);
 }
 
