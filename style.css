@@ -61,11 +61,9 @@ nav a {
     color: #bdbdbd;
     text-decoration: none;
     padding: 6px 0;
-    display: inline-block;
     transition: color 0.25s ease;
 }
 
-/* DEFAULT LINE (50%) */
 nav a::after {
     content: "";
     position: absolute;
@@ -74,24 +72,20 @@ nav a::after {
     width: 50%;
     height: 2px;
     background: var(--accent);
-
     transform: translateX(-50%);
     transition: width 0.25s ease;
 }
 
-/* HOVER ALWAYS WINS */
 nav a:hover::after {
     width: 100%;
 }
 
-/* ACTIVE = TEXT ONLY */
 nav a.active {
     color: var(--accent);
 }
 
-/* DO NOT OVERRIDE HOVER */
-nav a.active::after {
-    width: 50%;
+nav a:hover {
+    color: var(--accent-light);
 }
 
 /* HERO */
@@ -187,6 +181,12 @@ nav a.active::after {
     display: grid;
     grid-template-columns: repeat(3, var(--card-width));
     gap: var(--space-md);
+    justify-content: center;
+}
+
+/* HOME PAGE FIX: if there are only 2 cards, center them */
+.card-grid:has(.card:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, var(--card-width));
 }
 
 /* CARDS */
@@ -230,19 +230,17 @@ nav a.active::after {
     line-height: 1.7;
 }
 
-/* FAMILY LABELS */
+/* FAMILY ROLE LABELS */
 .role {
     font-size: 0.75rem;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     color: #bdbdbd;
-
     margin-bottom: 12px;
     position: relative;
     padding-bottom: 8px;
 }
 
-/* BLUE DIVIDER LINE */
 .role::after {
     content: "";
     display: block;
@@ -338,7 +336,8 @@ footer {
         max-width: var(--card-width);
     }
 
-    .card-grid {
+    .card-grid,
+    .card-grid:has(.card:nth-child(2):last-child) {
         grid-template-columns: 1fr;
     }
 
