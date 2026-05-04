@@ -61,22 +61,30 @@ nav a {
     color: #bdbdbd;
     text-decoration: none;
     padding: 6px 0;
-    transition: 0.25s;
+    display: inline-block;
+    transition: color 0.25s ease;
 }
 
+/* DEFAULT LINE (HALF WIDTH) */
 nav a::after {
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 0;
-    width: 45%;
+    bottom: -4px;
+    width: 50%;
     height: 2px;
     background: var(--accent);
+
     transform: translateX(-50%);
-    transition: 0.25s;
+    transition: width 0.25s ease;
 }
 
-nav a:hover::after,
+/* HOVER = FULL WIDTH */
+nav a:hover::after {
+    width: 100%;
+}
+
+/* OPTIONAL: active page stays full width */
 nav a.active::after {
     width: 100%;
 }
