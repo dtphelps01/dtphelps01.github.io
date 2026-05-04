@@ -254,12 +254,15 @@ nav a:hover {
 /* FOOTER */
 footer {
     margin-top: var(--space-lg);
+    padding: 20px;
     text-align: center;
     color: #777;
-    padding: 20px;
     border-top: 1px solid var(--border);
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.8s forwards;
+}
+
+.footer-title {
+    color: var(--accent);
+    font-weight: 500;
 }
 
 /* ANIMATIONS */
