@@ -65,7 +65,7 @@ nav a {
     transition: color 0.25s ease;
 }
 
-/* DEFAULT LINE (HALF WIDTH) */
+/* DEFAULT LINE (50%) */
 nav a::after {
     content: "";
     position: absolute;
@@ -79,18 +79,19 @@ nav a::after {
     transition: width 0.25s ease;
 }
 
-/* HOVER = FULL WIDTH */
+/* HOVER ONLY = FULL WIDTH */
 nav a:hover::after {
     width: 100%;
 }
 
-/* OPTIONAL: active page stays full width */
-nav a.active::after {
-    width: 100%;
+/* ACTIVE PAGE = BLUE TEXT ONLY */
+nav a.active {
+    color: var(--accent);
 }
 
-nav a:hover {
-    color: var(--accent-light);
+/* IMPORTANT: keep underline at 50% even when active */
+nav a.active::after {
+    width: 50%;
 }
 
 /* HERO */
