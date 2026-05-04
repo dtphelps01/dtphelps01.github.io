@@ -222,17 +222,26 @@ nav a:hover {
 }
 
 /* FAMILY LABELS */
-.badge {
-    display: inline-block;
-    margin-bottom: 12px;
-    padding: 5px 10px;
-    font-size: 0.7rem;
-    letter-spacing: 1px;
+.role {
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: white;
-    border: 1px solid white;
-    background: transparent;
-    border-radius: 6px;
+    color: #bdbdbd;
+
+    margin-bottom: 12px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+/* BLUE DIVIDER LINE */
+.role::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin-top: 6px;
+    border-radius: 999px;
 }
 
 /* FOOTER */
