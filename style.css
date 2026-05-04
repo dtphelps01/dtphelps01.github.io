@@ -82,7 +82,6 @@ nav a.active {
     animation: titleLoad 0.9s ease forwards;
 }
 
-/* BLUE TITLE PART */
 .hero h1 span {
     background: linear-gradient(90deg, var(--accent-dark), var(--accent), var(--accent-light));
     -webkit-background-clip: text;
@@ -90,7 +89,7 @@ nav a.active {
     color: transparent;
 }
 
-/* SOFT PULSING GLOW */
+/* GLOW */
 .hero h1::before {
     content: "";
     position: absolute;
@@ -111,7 +110,6 @@ nav a.active {
     animation: glowPulse 4s ease-in-out infinite;
 }
 
-/* TEXT */
 .hero p {
     color: #bdbdbd;
     font-size: 1.15rem;
@@ -122,29 +120,53 @@ nav a.active {
     animation: fadeUp 0.8s ease 0.2s forwards;
 }
 
-/* BUTTONS */
+/* BUTTONS (SPACING FIXED) */
 .button-group {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: var(--space-sm);
 
-    margin-bottom: 36px; /* 🔥 reduced from var(--space-lg) (64px) */
-    
+    margin-bottom: 36px; /* 🔥 adjusted spacing */
+
     opacity: 0;
     animation: fadeUp 0.8s ease 0.35s forwards;
+}
+
+.btn {
+    min-width: 210px;
+    text-align: center;
+    padding: 13px 24px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: 0.25s;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn:first-child {
+    background: linear-gradient(90deg, var(--accent-dark), var(--accent), var(--accent-light));
+    color: var(--bg);
+    border: 1px solid var(--accent);
+}
+
+.btn:last-child {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    background: transparent;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 22px rgba(43, 113, 194, 0.42);
 }
 
 /* CONTENT */
 .container {
     width: 100%;
     max-width: 1150px;
-
     margin: 0 auto var(--space-lg);
-    margin-top: 0; /* 🔥 ensures no extra gap stacking */
-
     padding: 0 28px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -154,10 +176,8 @@ nav a.active {
 .card-grid {
     width: 100%;
     display: grid;
-
     grid-template-columns: repeat(auto-fit, minmax(320px, 340px));
     justify-content: center;
-
     gap: var(--space-md);
 }
 
@@ -224,14 +244,6 @@ nav a.active {
     background: rgba(43, 113, 194, 0.08);
 }
 
-/* STANDALONE CARD */
-.container > .card {
-    width: 100%;
-    max-width: 1084px;
-    margin-top: var(--space-md);
-    animation-delay: 0.75s;
-}
-
 /* FOOTER */
 footer {
     border-top: 1px solid var(--border);
@@ -248,20 +260,12 @@ footer p::before {
     color: var(--accent);
 }
 
-/* ACCESSIBILITY */
-a:focus,
-.btn:focus {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-}
-
 /* ANIMATIONS */
 @keyframes titleLoad {
     from {
         opacity: 0;
         transform: translateY(22px) scale(0.98);
     }
-
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -273,7 +277,6 @@ a:focus,
         opacity: 0.55;
         transform: translate(-50%, -50%) scale(0.96);
     }
-
     50% {
         opacity: 0.95;
         transform: translate(-50%, -50%) scale(1.04);
@@ -285,7 +288,6 @@ a:focus,
         opacity: 0;
         transform: translateY(18px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -297,7 +299,6 @@ a:focus,
         opacity: 0;
         transform: translateY(-12px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -341,9 +342,5 @@ a:focus,
 
     .card-grid {
         grid-template-columns: 1fr;
-    }
-
-    .container > .card {
-        max-width: 100%;
     }
 }
