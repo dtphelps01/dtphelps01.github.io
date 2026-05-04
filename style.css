@@ -79,17 +79,17 @@ nav a::after {
     transition: width 0.25s ease;
 }
 
-/* HOVER ONLY = FULL WIDTH */
+/* HOVER ALWAYS WINS */
 nav a:hover::after {
     width: 100%;
 }
 
-/* ACTIVE PAGE = BLUE TEXT ONLY */
+/* ACTIVE = TEXT ONLY */
 nav a.active {
     color: var(--accent);
 }
 
-/* IMPORTANT: keep underline at 50% even when active */
+/* DO NOT OVERRIDE HOVER */
 nav a.active::after {
     width: 50%;
 }
